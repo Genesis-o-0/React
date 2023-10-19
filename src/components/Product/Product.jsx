@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 export default function Product(props) {
   return (
-    <div className="col pt-5">
+    <div className="col py-5">
       <div className="card">
         <img
           src={props.image}

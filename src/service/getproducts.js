@@ -1,7 +1,7 @@
-const getProducts = (url) => {
-  return fetch(url)
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
+const getProducts = async (url) => {
+  const res = await fetch(url);
+  const products = await res.json();
+  return products;
 };
 
 export default getProducts;
