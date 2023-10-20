@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getproducts from "../../service/getproducts";
+import getproducts from "../../api/getproducts";
 import Product from "../Product/Product";
 
 export default function Shop() {

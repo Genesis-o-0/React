@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "../Home/Home";
 import Shop from "../Shop/Shop";
 import About from "../About/About";
+import Counter from "../Counter/Counter";
 import ProductDetails from "../ProductDetails/ProductDetails";
 
 export default function Navbar() {
@@ -37,6 +38,9 @@ export default function Navbar() {
               <Link className="nav-link" to="/shop">
                 Shop
               </Link>
+              <Link className="nav-link" to="/counter">
+                Counter
+              </Link>
             </div>
           </div>
         </div>
@@ -47,6 +51,7 @@ export default function Navbar() {
         <Route path="/" Component={Home} />
         <Route path="/shop" Component={Shop} />
         <Route path="/about" Component={About} />
+        <Route path="/counter" Component={Counter} />
         <Route path="/product-details/:id" Component={ProductDetails}></Route>
       </Routes>
     </BrowserRouter>
