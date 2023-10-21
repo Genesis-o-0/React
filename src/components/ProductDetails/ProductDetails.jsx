@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import getProducts from "../../api/getproducts";
 import Product from "../Product/Product";
-
+import useFetch from "../../hooks/useFetch";
+import Loading from "../Loading/Loading";
 export default function ProductDetails() {
   const { id } = useParams();
 
-  const [product, setProduct] = useState({});
-
-  useEffect(() => {
-    getProducts(`https://fakestoreapi.com/products/${id}`).then((product) => {
-      setProduct(product);
-    });
-  });
+  const {
+    data: product,
+    loading,
+    error,
+  } = useFetch(`https://fakestoreapi.com/products/${id}`);
 
   return (
     <>
-      <Product key={product.id} {...product} />
+      <Loading loading={loading} error={error}>
+        <Product key={product.id} {...product} />
+      </Loading>
     </>
   );
 }

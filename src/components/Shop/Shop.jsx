@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
-import getproducts from "../../api/getproducts";
+import useFetch from "../../hooks/useFetch";
 import Product from "../Product/Product";
-
+import Loading from "../Loading/Loading";
 export default function Shop() {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    getproducts("https://fakestoreapi.com/products").then((data) => {
-      setProducts(data);
-    });
-  }, []);
+  const {
+    data: products,
+    loading,
+    error,
+  } = useFetch("https://fakestoreapi.com/products");
 
-  let productList;
-  if (products !== undefined) {
-    productList = products.map((product) => {
-      return <Product key={product.id} {...product} />;
-    });
-  }
-  return <div className="row row-cols-4 py-5 row-gap-5">{productList}</div>;
+  return (
+    <Loading loading={loading} error={error}>
+      {products.map((product) => {
+        return <Product key={product.id} {...product} />;
+      })}
+    </Loading>
+  );
 }
