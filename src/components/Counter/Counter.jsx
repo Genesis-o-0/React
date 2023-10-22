@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "../../store/counterSlice";
+
 
 export default function Counter() {
-  let [number, setNumber] = useState(20);
-  const increment = () => setNumber(++number);
-  const decrement = () => {
-    if (number > 0) {
-      setNumber(--number);
-    }
-  };
+  const totalDonations = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
   return (
     <div className="pt-5">
-      <h1 className="text-center text-primary fw-bold ">{number}</h1>
+      <h1 className="text-center text-primary fw-bold pb-5">
+        Amount of donations: {totalDonations}$
+      </h1>
       <div className="d-flex justify-content-center gap-5">
-        <button className="btn btn-success mx-5" onClick={increment}>
+        <button
+          className="btn btn-success mx-5"
+          onClick={() => dispatch(increment())}
+        >
           Increment
         </button>
-        <button className="btn btn-danger mx-5" onClick={decrement}>
+        <button
+          className="btn btn-danger mx-5"
+          onClick={() => dispatch(decrement())}
+        >
           Decrement
         </button>
       </div>

@@ -1,4 +1,8 @@
+import { useSelector } from "react-redux";
+
 export default function About() {
+  const totalDonations = useSelector((state) => state.counter.value);
+
   return (
     <>
       <div className="jumbotron pt-5">
@@ -20,6 +24,9 @@ export default function About() {
           resource. We hope you find our website useful and that it enhances
           your shopping journey.
         </p>
+        <h3 className="text-center text-primary fw-bold py-5">
+          Amount of donations: {totalDonations}$
+        </h3>
       </div>
     </>
   );
