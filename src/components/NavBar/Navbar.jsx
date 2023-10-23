@@ -4,6 +4,8 @@ import Shop from "../Shop/Shop";
 import About from "../About/About";
 import Counter from "../Counter/Counter";
 import ProductDetails from "../ProductDetails/ProductDetails";
+import Login from "../Login/Login";
+import Signup from "../Signup/Signup";
 
 export default function Navbar() {
   return (
@@ -29,7 +31,7 @@ export default function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup ">
             <div className="navbar-nav  ms-auto">
-              <Link className="nav-link active" aria-current="page" to="/home">
+              <Link className="nav-link" aria-current="page" to="/home">
                 Home
               </Link>
               <Link className="nav-link" to="/about">
@@ -40,6 +42,12 @@ export default function Navbar() {
               </Link>
               <Link className="nav-link" to="/counter">
                 Counter
+              </Link>
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+              <Link className="nav-link" to="/signup">
+                Signup
               </Link>
             </div>
           </div>
@@ -52,6 +60,8 @@ export default function Navbar() {
         <Route path="/shop" Component={Shop} />
         <Route path="/about" Component={About} />
         <Route path="/counter" Component={Counter} />
+        <Route path="/login" Component={Login} />
+        <Route path="/signup" Component={Signup} />
         <Route path="/product-details/:id" Component={ProductDetails}></Route>
       </Routes>
     </BrowserRouter>
